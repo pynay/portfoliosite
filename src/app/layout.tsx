@@ -25,8 +25,8 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pranayy.com"),
   title: {
-    default: "Pranay Yalamanchali",
-    template: "%s — Pranay Yalamanchali",
+    default: "pranay.fyi",
+    template: "%s — pranay.fyi",
   },
   description:
     "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
