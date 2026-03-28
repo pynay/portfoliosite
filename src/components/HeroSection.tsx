@@ -47,7 +47,7 @@ export function HeroSection() {
         transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
         className="text-neutral-500 text-lg max-w-xl leading-relaxed tracking-wide"
       >
-        math-cs @ ucsd · software developer
+        math-cs ∩ cogsci ml ∈ ucsd · software developer
       </motion.p>
 
       {/* Decorative line — grows from left */}
