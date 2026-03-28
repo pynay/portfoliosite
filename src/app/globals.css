@@ -40,6 +40,39 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Focus-visible outline for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip-to-content link for screen readers and keyboard users */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background: var(--color-sage);
+  color: var(--color-custard);
+  font-size: 0.875rem;
+}
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 /* Print styles for shareable Ctrl+P on /projects and /resume */
 @media print {
   /* Hide navigation and footer */

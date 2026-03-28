@@ -7,7 +7,11 @@ import type { ReactNode } from "react";
   Reusable fade-up-on-scroll wrapper using Framer Motion.
   Triggers once when the element enters the viewport.
   The motion is subtle — 20px upward translate with opacity fade.
-  Think: a leaf landing on water.
+
+  Reduced motion is handled at the CSS level via
+  @media (prefers-reduced-motion: reduce) in globals.css,
+  which sets all transition/animation durations to ~0ms.
+  This avoids hydration mismatches from useReducedMotion().
 */
 export function FadeIn({
   children,

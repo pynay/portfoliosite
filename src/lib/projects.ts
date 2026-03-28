@@ -15,6 +15,7 @@ export interface Project {
     demo?: string;
   };
   image?: string; // path to screenshot in /public/images/
+  blurDataURL?: string;
 }
 
 export const projects: Project[] = [

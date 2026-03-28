@@ -13,7 +13,12 @@ import { motion, AnimatePresence } from "framer-motion";
   - Active link has an animated underline indicator
   - Mobile menu slides down with framer-motion
   - Hamburger lines animate into X with rotation
+  - Full ARIA: role, aria-label, aria-expanded, aria-current, focus-visible rings
 */
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-custard";
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +42,8 @@ export function Nav() {
 
   return (
     <nav
+      role="navigation"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-custard/80 backdrop-blur-md border-b border-sage/10"
@@ -46,7 +53,7 @@ export function Nav() {
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="font-serif text-sage text-xl hover:text-sage-dark transition-colors duration-300"
+          className={`font-serif text-sage text-xl hover:text-sage-dark transition-colors duration-300 ${focusRing}`}
         >
           Pranay Yalamanchali
         </Link>
@@ -57,7 +64,8 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`relative text-sm tracking-widest lowercase transition-colors duration-300 py-1 ${
+              aria-current={pathname === link.href ? "page" : undefined}
+              className={`relative text-sm tracking-widest lowercase transition-colors duration-300 py-1 ${focusRing} ${
                 pathname === link.href
                   ? "text-sage"
                   : "text-neutral-400 hover:text-sage"
@@ -78,8 +86,9 @@ export function Nav() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="sm:hidden flex flex-col gap-1.5 p-2"
+          className={`sm:hidden flex flex-col gap-1.5 p-2 ${focusRing}`}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <span
             className={`block w-5 h-px bg-sage transition-all duration-300 origin-center ${
@@ -119,7 +128,8 @@ export function Nav() {
                 >
                   <Link
                     href={link.href}
-                    className={`block py-2.5 text-sm tracking-widest lowercase transition-colors duration-300 ${
+                    aria-current={pathname === link.href ? "page" : undefined}
+                    className={`block py-2.5 text-sm tracking-widest lowercase transition-colors duration-300 ${focusRing} ${
                       pathname === link.href
                         ? "text-sage"
                         : "text-neutral-400 hover:text-sage"

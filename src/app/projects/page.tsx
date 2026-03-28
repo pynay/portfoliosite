@@ -23,8 +23,11 @@ export default function ProjectsPage() {
         <h1 className="font-serif text-4xl sm:text-5xl text-sage mb-2">
           projects
         </h1>
-        <p className="text-neutral-500 mb-12">
+        <p className="text-neutral-500 mb-1">
           selected work
+        </p>
+        <p className="text-xs text-neutral-400 mb-12">
+          {projects.length} projects
         </p>
       </FadeIn>
 

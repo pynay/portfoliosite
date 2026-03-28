@@ -23,6 +23,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pranayy.com"),
   title: {
     default: "Pranay Yalamanchali",
     template: "%s — Pranay Yalamanchali",
@@ -61,9 +62,34 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <a href="#main-content" className="skip-to-content">
+          Skip to content
+        </a>
         <Nav />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
+
+        {/* JSON-LD Person structured data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Pranay Yalamanchali",
+              url: "https://pranayy.com",
+              jobTitle: "Student",
+              affiliation: {
+                "@type": "CollegeOrUniversity",
+                name: "University of California, San Diego",
+              },
+              description:
+                "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+            }),
+          }}
+        />
       </body>
     </html>
   );

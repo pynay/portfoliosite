@@ -5,8 +5,12 @@ import { motion } from "framer-motion";
 /*
   Staggered text reveal — each word fades in sequentially.
   Used on the hero name for an engaging first impression.
-  Words start at low opacity and animate to full,
+  Words start at low opacity with a blur and animate to full,
   creating a calm, intentional reveal.
+
+  Reduced motion is handled at the CSS level via
+  @media (prefers-reduced-motion: reduce) in globals.css.
+  This avoids hydration mismatches from useReducedMotion().
 */
 export function TextReveal({
   text,
