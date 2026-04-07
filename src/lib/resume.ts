@@ -29,7 +29,7 @@ export interface Skills {
 export const education: Education = {
   school: "University of California, San Diego",
   degree: "B.S. Mathematics-Computer Science",
-  expected: "Expected June 2027",
+  expected: "Expected December 2027",
   coursework: [
     "Advanced Data Structures",
     "Algorithms",
