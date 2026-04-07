@@ -5,10 +5,10 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/lib/projects";
 
 /*
-  Projects page — the most important page.
-  Information-rich cards with tech stacks, bullets, and links.
-  Print-optimized: Ctrl+P produces a clean, shareable document
-  (nav/footer hidden, no animations, break-inside-avoid on cards).
+  Projects page — 2-column card grid.
+  Each project is a self-contained card with image, description,
+  tech tags, bullets, and links.
+  Print-optimized: break-inside-avoid on each card.
 */
 export const metadata: Metadata = {
   title: "Projects",
@@ -23,17 +23,17 @@ export default function ProjectsPage() {
         <h1 className="font-serif text-4xl sm:text-5xl text-sage mb-2">
           projects
         </h1>
-        <p className="text-neutral-500 mb-1">
-          selected work
-        </p>
+        <p className="text-neutral-500 mb-1">selected work</p>
         <p className="text-xs text-neutral-400 mb-12">
           {projects.length} projects
         </p>
       </FadeIn>
 
-      <div className="divide-y divide-sage/10">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {projects.map((project, i) => (
+          <FadeIn key={project.slug} delay={i * 0.1}>
+            <ProjectCard project={project} priority={i === 0} />
+          </FadeIn>
         ))}
       </div>
     </Section>
