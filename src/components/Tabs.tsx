@@ -4,13 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /*
-  Reusable tabbed component — zen/minimal style.
+  Reusable tabbed component — dark mono style.
   Active tab gets an animated underline (layoutId pattern matching Nav.tsx).
   Content cross-fades on tab change via AnimatePresence.
 
   Print fallback: ALL tab contents are always in the DOM.
-  Non-active tabs are hidden on screen but revealed via print:block,
-  so Ctrl+P captures the full resume.
 */
 
 export interface Tab {
@@ -25,22 +23,20 @@ export function Tabs({ tabs }: { tabs: Tab[] }) {
   return (
     <div>
       {/* Tab buttons */}
-      <div className="flex gap-6 border-b border-sage/15 mb-8 print:hidden">
+      <div className="flex gap-6 lg:gap-8 border-b border-white/15 mb-8 print:hidden">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`relative pb-2.5 text-sm tracking-widest lowercase transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-custard ${
-              activeTab === tab.id
-                ? "text-sage"
-                : "text-neutral-400 hover:text-sage"
+            className={`relative pb-3 text-[10px] lg:text-xs font-mono tracking-widest transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+              activeTab === tab.id ? "text-white" : "text-white/40 hover:text-white/80"
             }`}
           >
             {tab.label}
             {activeTab === tab.id && (
               <motion.span
                 layoutId="tab-underline"
-                className="absolute bottom-0 left-0 right-0 h-px bg-sage/50"
+                className="absolute -bottom-px left-0 right-0 h-px bg-white"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
             )}
@@ -48,21 +44,19 @@ export function Tabs({ tabs }: { tabs: Tab[] }) {
         ))}
       </div>
 
-      {/* Tab content — all panels in DOM for print, only active visible on screen */}
+      {/* Tab content */}
       <div className="relative">
         {tabs.map((tab) => (
           <div
             key={tab.id}
             className={activeTab === tab.id ? "block" : "hidden print:block"}
           >
-            {/* Print heading — shown only in print for non-active tabs */}
             {activeTab !== tab.id && (
-              <h2 className="hidden print:block font-serif text-2xl text-sage mb-4 mt-10">
+              <h2 className="hidden print:block text-2xl text-white mb-4 mt-10 font-mono tracking-wider">
                 {tab.label}
               </h2>
             )}
 
-            {/* Animate only the active panel on screen */}
             {activeTab === tab.id ? (
               <AnimatePresence mode="wait">
                 <motion.div
@@ -76,7 +70,6 @@ export function Tabs({ tabs }: { tabs: Tab[] }) {
                 </motion.div>
               </AnimatePresence>
             ) : (
-              /* Non-active: rendered statically for print */
               tab.content
             )}
           </div>

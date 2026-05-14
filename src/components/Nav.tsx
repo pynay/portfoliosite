@@ -2,113 +2,94 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /*
-  Fixed top nav — transparent at top, frosted custard on scroll.
-  Name on left (serif, green), lowercase letterspaced links on right.
-
-  Upgrades over basic version:
-  - Active link has an animated underline indicator
-  - Mobile menu slides down with framer-motion
-  - Hamburger lines animate into X with rotation
-  - Full ARIA: role, aria-label, aria-expanded, aria-current, focus-visible rings
+  Top header — matches the landing hero's header bar.
+  Visible on every page. Sticky to the top.
 */
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage focus-visible:ring-offset-2 focus-visible:ring-offset-custard";
+  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const closeMenu = () => setMenuOpen(false);
 
   const links = [
-    { href: "/", label: "home" },
-    { href: "/projects", label: "projects" },
-    { href: "/resume", label: "resume" },
+    { href: "/projects", label: "PROJECTS" },
+    { href: "/resume", label: "RESUME" },
   ];
 
   return (
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-custard/80 backdrop-blur-md border-b border-sage/10"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-white/20 bg-black/40 backdrop-blur-sm"
     >
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className={`font-serif text-sage text-xl hover:text-sage-dark transition-colors duration-300 ${focusRing}`}
-        >
-          Pranay Yalamanchali
+      <div className="container mx-auto px-4 lg:px-8 py-3 lg:py-4 flex items-center justify-between">
+        <Link href="/" onClick={closeMenu} className={`flex items-center gap-2 lg:gap-4 ${focusRing}`}>
+          <span className="font-mono text-white text-xl lg:text-2xl font-bold tracking-widest italic transform -skew-x-12">
+            PRANAY
+          </span>
+          <span className="h-3 lg:h-4 w-px bg-white/40" />
+          <span className="text-white/60 text-[8px] lg:text-[10px] font-mono">EST. 2025</span>
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden sm:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 text-[10px] font-mono text-white/60">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               aria-current={pathname === link.href ? "page" : undefined}
-              className={`relative text-sm tracking-widest lowercase transition-colors duration-300 py-1 ${focusRing} ${
-                pathname === link.href
-                  ? "text-sage"
-                  : "text-neutral-400 hover:text-sage"
+              className={`relative transition-colors hover:text-white py-1 ${focusRing} ${
+                pathname === link.href ? "text-white" : ""
               }`}
             >
               {link.label}
               {pathname === link.href && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute -bottom-0.5 left-0 right-0 h-px bg-sage/50"
+                  className="absolute -bottom-0.5 left-0 right-0 h-px bg-white"
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
             </Link>
           ))}
+          <div className="w-px h-3 bg-white/30" />
+          <span>LAT: 32.8801°</span>
+          <div className="w-1 h-1 bg-white/40 rounded-full" />
+          <span>LONG: -117.2340°</span>
         </div>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`sm:hidden flex flex-col gap-1.5 p-2 ${focusRing}`}
+          className={`lg:hidden flex flex-col gap-1.5 p-2 ${focusRing}`}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
           <span
-            className={`block w-5 h-px bg-sage transition-all duration-300 origin-center ${
+            className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
               menuOpen ? "translate-y-[3.5px] rotate-45" : ""
             }`}
           />
           <span
-            className={`block w-5 h-px bg-sage transition-all duration-300 ${
+            className={`block w-5 h-px bg-white transition-all duration-300 ${
               menuOpen ? "opacity-0 scale-x-0" : ""
             }`}
           />
           <span
-            className={`block w-5 h-px bg-sage transition-all duration-300 origin-center ${
+            className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
               menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
-      {/* Mobile menu — animated dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -116,9 +97,9 @@ export function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="sm:hidden overflow-hidden bg-custard/95 backdrop-blur-md border-b border-sage/10"
+            className="lg:hidden overflow-hidden bg-black/90 backdrop-blur-md border-b border-white/20"
           >
-            <div className="px-6 pb-4">
+            <div className="px-4 pb-4">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -128,11 +109,10 @@ export function Nav() {
                 >
                   <Link
                     href={link.href}
+                    onClick={closeMenu}
                     aria-current={pathname === link.href ? "page" : undefined}
-                    className={`block py-2.5 text-sm tracking-widest lowercase transition-colors duration-300 ${focusRing} ${
-                      pathname === link.href
-                        ? "text-sage"
-                        : "text-neutral-400 hover:text-sage"
+                    className={`block py-2.5 text-[11px] font-mono tracking-widest transition-colors ${focusRing} ${
+                      pathname === link.href ? "text-white" : "text-white/60 hover:text-white"
                     }`}
                   >
                     {link.label}

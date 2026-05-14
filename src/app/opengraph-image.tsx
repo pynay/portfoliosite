@@ -6,12 +6,6 @@ export const alt = "Pranay Yalamanchali — Software Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/*
-  OG image for social previews.
-  Uses system fonts (Georgia for the name, system-ui for subtitle)
-  on a custard (#F5E8D0) background with sage (#4A6741) text.
-  Kept intentionally simple — centered text, no external assets.
-*/
 export default function OGImage() {
   return new ImageResponse(
     (
@@ -23,24 +17,26 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#F5E8D0",
+          backgroundColor: "#000000",
         }}
       >
         <div
           style={{
-            fontFamily: "Georgia, serif",
+            fontFamily: "monospace",
             fontSize: 64,
-            color: "#4A6741",
+            fontWeight: 700,
+            color: "#ffffff",
+            letterSpacing: "0.1em",
             marginBottom: 16,
           }}
         >
-          Pranay Yalamanchali
+          PRANAY YALAMANCHALI
         </div>
         <div
           style={{
-            fontFamily: "system-ui, sans-serif",
-            fontSize: 28,
-            color: "#737373",
+            fontFamily: "monospace",
+            fontSize: 24,
+            color: "rgba(255,255,255,0.6)",
           }}
         >
           math-cs @ ucsd · software developer

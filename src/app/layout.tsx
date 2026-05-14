@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -61,6 +62,21 @@ export default function RootLayout({
       lang="en"
       className={`${instrumentSerif.variable} ${dmSans.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://assets.unicorn.studio" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://unicorn.studio" />
+        <link
+          rel="preload"
+          as="script"
+          href="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <Script
+        src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js"
+        strategy="afterInteractive"
+      />
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-to-content">
           Skip to content

@@ -1,52 +1,43 @@
 @import "tailwindcss";
 
 /*
-  Theme: zen/minimal Japanese-inspired
-  Background: warm custard cream
-  Accent: muted sage/forest green
-  No dark mode — this site lives in warmth.
+  Theme: dark mono / engineering-print aesthetic.
+  Background is pure black, text is white/gray-300, font is mono.
 */
 
 @theme inline {
-  --color-custard: #F5E8D0;
-  --color-custard-dark: #EBD9B8;
-  --color-sage: #4A6741;
-  --color-sage-light: #E8EFE6;
-  --color-sage-dark: #3A5233;
+  --color-bg: #000000;
+  --color-fg: #ffffff;
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-instrument-serif);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-/* Base styles */
 body {
-  background-color: var(--color-custard);
-  color: #2D2D2D;
-  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
 }
 
-/* Green-on-pale-green text selection */
 ::selection {
-  background-color: var(--color-sage-light);
-  color: var(--color-sage);
+  background-color: #ffffff;
+  color: #000000;
 }
 
 ::-moz-selection {
-  background-color: var(--color-sage-light);
-  color: var(--color-sage);
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Focus-visible outline for keyboard navigation */
 *:focus-visible {
-  outline: 2px solid var(--color-sage);
+  outline: 1px solid #ffffff;
   outline-offset: 2px;
 }
 
-/* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -58,15 +49,15 @@ html {
   }
 }
 
-/* Skip-to-content link for screen readers and keyboard users */
 .skip-to-content {
   position: absolute;
   left: -9999px;
   z-index: 999;
   padding: 0.5rem 1rem;
-  background: var(--color-sage);
-  color: var(--color-custard);
+  background: #ffffff;
+  color: #000000;
   font-size: 0.875rem;
+  font-family: var(--font-mono);
 }
 .skip-to-content:focus {
   left: 1rem;
@@ -75,13 +66,11 @@ html {
 
 /* Print styles for shareable Ctrl+P on /projects and /resume */
 @media print {
-  /* Hide navigation and footer */
   nav,
   footer {
     display: none !important;
   }
 
-  /* Clean background for printing */
   body {
     background-color: white !important;
     color: black !important;
@@ -89,7 +78,6 @@ html {
     line-height: 1.4;
   }
 
-  /* Remove animations */
   * {
     animation: none !important;
     transition: none !important;
@@ -97,36 +85,30 @@ html {
     transform: none !important;
   }
 
-  /* Prevent content from breaking across pages */
   .project-card {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  /* Clean link display */
   a {
     color: black !important;
     text-decoration: underline;
   }
 
-  /* Show URLs after links for external references */
   a[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 0.8em;
     color: #666;
   }
 
-  /* Don't show URL for internal nav links */
   a[href^="/"]::after {
     content: none;
   }
 
-  /* Clean margins */
   @page {
     margin: 1cm 1.5cm;
   }
 
-  /* Hide placeholder images in print */
   .placeholder-image {
     display: none !important;
   }
