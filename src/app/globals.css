@@ -1,123 +1,96 @@
 @import "tailwindcss";
 
 /*
-  Minimal text-first theme (Bear-blog style).
-  System fonts, narrow column, auto light/dark.
-  All element styles live here; pages are plain semantic markup.
+  One-page personal site.
+  Paper-and-ink serif with tiny mono section labels and a single
+  green accent. Auto light/dark.
 */
 
 :root {
-  --bg: #ffffff;
-  --fg: #1f1f1f;
-  --muted: #6b6b6b;
-  --link: #2f5fd0;
-  --border: #e2e2e2;
+  --bg: #faf9f7;
+  --fg: #201e1b;
+  --muted: #7a756d;
+  --accent: #3d6b4f;
+  --border: #e6e3dd;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #141414;
-    --fg: #dadada;
-    --muted: #949494;
-    --link: #8fb3ff;
-    --border: #2e2e2e;
+    --bg: #171614;
+    --fg: #e3e0da;
+    --muted: #8f8a81;
+    --accent: #94bd9e;
+    --border: #2c2a26;
   }
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 40rem;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  max-width: 36rem;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding: 4.5rem 1.5rem 5rem;
 }
 
 h1 {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin: 0 0 0.25rem;
-}
-
-h2 {
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: italic;
-  margin: 2rem 0 0.5rem;
-}
-
-h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 1.25rem 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 p {
   margin: 0.5rem 0;
 }
 
-ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-  margin: 0.5rem 0;
+.bio {
+  margin-top: 1.75rem;
 }
 
-li {
-  margin: 0.25rem 0;
+.bio p {
+  margin: 1.1rem 0;
+}
+
+.accent {
+  color: var(--accent);
+  font-weight: 500;
 }
 
 a {
-  color: var(--link);
+  color: var(--fg);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 a:hover {
-  text-decoration: none;
+  color: var(--accent);
 }
 
-header.site-header {
-  margin-bottom: 2rem;
-}
-
-header.site-header a.site-title {
-  color: var(--fg);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-header.site-header nav {
-  margin-top: 0.25rem;
-}
-
-header.site-header nav a {
-  color: var(--muted);
-  text-decoration: none;
-  margin-right: 1rem;
-}
-
-header.site-header nav a:hover {
-  color: var(--fg);
-  text-decoration: underline;
-}
-
-footer.site-footer {
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 0.85rem;
+a:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .muted {
   color: var(--muted);
 }
 
+footer {
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
 ::selection {
-  background-color: var(--fg);
+  background-color: var(--accent);
   color: var(--bg);
 }
 

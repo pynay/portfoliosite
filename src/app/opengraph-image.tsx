@@ -15,29 +15,39 @@ export default function OGImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "center",
-          backgroundColor: "#ffffff",
+          padding: "0 120px",
+          backgroundColor: "#faf9f7",
         }}
       >
         <div
           style={{
-            fontSize: 56,
-            fontWeight: 700,
-            color: "#1f1f1f",
-            marginBottom: 16,
+            fontSize: 58,
+            fontWeight: 500,
+            color: "#201e1b",
+            marginBottom: 20,
           }}
         >
           pranay yalamanchali
         </div>
         <div
           style={{
-            fontSize: 28,
-            color: "#6b6b6b",
+            fontSize: 26,
+            color: "#7a756d",
+            fontStyle: "italic",
           }}
         >
-          math-cs @ ucsd
+          building netra · math-cs @ ucsd
         </div>
+        <div
+          style={{
+            width: 64,
+            height: 4,
+            backgroundColor: "#3d6b4f",
+            marginTop: 36,
+          }}
+        />
       </div>
     ),
     { ...size }

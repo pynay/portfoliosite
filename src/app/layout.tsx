@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Newsreader } from "next/font/google";
 import "./globals.css";
+
+const newsreader = Newsreader({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pranay.fyi"),
@@ -9,11 +16,11 @@ export const metadata: Metadata = {
     template: "%s — pranay yalamanchali",
   },
   description:
-    "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+    "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
   openGraph: {
     title: "pranay yalamanchali",
     description:
-      "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+      "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
     url: "https://pranay.fyi",
     siteName: "pranay yalamanchali",
     locale: "en_US",
@@ -23,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "pranay yalamanchali",
     description:
-      "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+      "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
   },
   robots: {
     index: true,
@@ -37,38 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <header className="site-header">
-          <Link href="/" className="site-title">
-            pranay yalamanchali
-          </Link>
-          <nav>
-            <Link href="/">home</Link>
-            <Link href="/projects">projects</Link>
-            <Link href="/resume">resume</Link>
-          </nav>
-        </header>
-        <main>{children}</main>
-        <footer className="site-footer">
-          <a
-            href="https://github.com/pynay"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-          </a>{" "}
-          ·{" "}
-          <a
-            href="https://linkedin.com/in/pranay-yalamanchali"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-          </a>{" "}
-          · <a href="mailto:pranay.yalaman@gmail.com">email</a>
-        </footer>
-      </body>
+    <html lang="en" className={newsreader.variable}>
+      <body>{children}</body>
     </html>
   );
 }
