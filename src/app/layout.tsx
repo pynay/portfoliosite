@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     template: "%s — pranay yalamanchali",
   },
   description:
-    "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
+    "Co-founder & CEO of Netra, building counter-drone defense. Math-CS at UC San Diego.",
   openGraph: {
     title: "pranay yalamanchali",
     description:
-      "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
+      "Co-founder & CEO of Netra, building counter-drone defense. Math-CS at UC San Diego.",
     url: "https://pranay.fyi",
     siteName: "pranay yalamanchali",
     locale: "en_US",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "pranay yalamanchali",
     description:
-      "Building Netra. Math-CS at UC San Diego. Interested in systems, infrastructure, and tools that work.",
+      "Co-founder & CEO of Netra, building counter-drone defense. Math-CS at UC San Diego.",
   },
   robots: {
     index: true,

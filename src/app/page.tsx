@@ -5,16 +5,31 @@ export default function Home() {
 
       <div className="bio">
         <p>
-          I&apos;m building{" "}
-          <span className="accent">Netra</span>, where we&apos;re working on
-          counter-drone detection for security teams.
+          I&apos;m the co-founder and CEO of{" "}
+          <a
+            href="https://netralabs.net"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="accent">Netra</span>
+          </a>
+          , where we&apos;re building counter-drone defense — low-cost solar
+          sensor nodes that watch large perimeters.
         </p>
         <p>
-          I&apos;m also studying math and computer science at{" "}
+          I&apos;m also finishing a math and computer science degree at{" "}
           <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
             UC San Diego
           </a>
           . Before Netra, I interned at{" "}
+          <a
+            href="https://gmicloud.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GMI Cloud
+          </a>{" "}
+          and{" "}
           <a
             href="https://pedestal.ai"
             target="_blank"

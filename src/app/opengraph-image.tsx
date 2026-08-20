@@ -38,7 +38,7 @@ export default function OGImage() {
             fontStyle: "italic",
           }}
         >
-          building netra · math-cs @ ucsd
+          co-founder &amp; ceo of netra · math-cs @ ucsd
         </div>
         <div
           style={{
