@@ -5,8 +5,9 @@ import { useEffect } from "react";
 /*
   Hover redaction: each word steps through the degraded Redaction cuts
   (10 -> 20 -> 35 -> 50 -> 70 -> 100) while hovered, ends as a solid
-  bar, and resets on mouse-out. Words inside the h1 already render in
-  Redaction 50, so they start further along the sequence.
+  bar, then steps back down to clean text after the mouse leaves.
+  Words inside the h1 already render in Redaction 50, so they start
+  further along the sequence.
 */
 
 const LEVELS = [
@@ -17,7 +18,14 @@ const LEVELS = [
   "Redaction 70",
   "Redaction 100",
 ];
+const BAR = LEVELS.length; // one past the last cut: solid bar
 const STEP_MS = 140;
+
+interface WordState {
+  level: number;
+  dir: 1 | -1;
+  timer: number;
+}
 
 export function Redactor() {
   useEffect(() => {
@@ -48,44 +56,61 @@ export function Redactor() {
       });
     });
 
-    const timers = new Map<HTMLElement, number>();
+    const state = new Map<HTMLElement, WordState>();
 
-    const step = (el: HTMLElement, level: number) => {
-      if (level < LEVELS.length) {
-        el.style.fontFamily = `"${LEVELS[level]}", var(--font-redaction), serif`;
-        timers.set(
-          el,
-          window.setTimeout(() => step(el, level + 1), STEP_MS)
-        );
-      } else {
-        el.classList.add("rw-full");
-      }
-    };
-
-    const reset = (el: HTMLElement) => {
-      const t = timers.get(el);
-      if (t !== undefined) window.clearTimeout(t);
-      timers.delete(el);
+    const clean = (el: HTMLElement) => {
+      state.delete(el);
       el.style.fontFamily = "";
       el.classList.remove("rw-full");
     };
 
+    const tick = (el: HTMLElement) => {
+      const s = state.get(el);
+      if (!s) return;
+      const start = Number(el.dataset.start ?? 0);
+      s.level = Math.min(BAR, s.level + s.dir);
+
+      if (s.level < start) {
+        clean(el);
+        return;
+      }
+
+      el.classList.toggle("rw-full", s.level >= BAR);
+      el.style.fontFamily = `"${LEVELS[Math.min(s.level, BAR - 1)]}", var(--font-redaction), serif`;
+
+      if (s.dir === 1 && s.level >= BAR) return; // fully redacted; hold
+      s.timer = window.setTimeout(() => tick(el), STEP_MS);
+    };
+
+    const steer = (el: HTMLElement, dir: 1 | -1) => {
+      const s = state.get(el);
+      if (s) {
+        if (s.dir === dir) return;
+        s.dir = dir;
+        window.clearTimeout(s.timer);
+        s.timer = window.setTimeout(() => tick(el), STEP_MS);
+      } else if (dir === 1) {
+        const start = Number(el.dataset.start ?? 0);
+        state.set(el, { level: start - 1, dir: 1, timer: 0 });
+        tick(el);
+      }
+    };
+
+    const wordOf = (e: MouseEvent) =>
+      ((e.target as Element | null)?.closest?.(".rw") ??
+        null) as HTMLElement | null;
+
     const onOver = (e: MouseEvent) => {
-      const el = (e.target as Element | null)?.closest?.(
-        ".rw"
-      ) as HTMLElement | null;
-      if (!el || timers.has(el)) return;
-      step(el, Number(el.dataset.start ?? 0));
+      const el = wordOf(e);
+      if (el) steer(el, 1);
     };
 
     const onOut = (e: MouseEvent) => {
-      const el = (e.target as Element | null)?.closest?.(
-        ".rw"
-      ) as HTMLElement | null;
+      const el = wordOf(e);
       if (!el) return;
       const to = e.relatedTarget as Element | null;
       if (to && el.contains(to)) return;
-      reset(el);
+      steer(el, -1);
     };
 
     document.addEventListener("mouseover", onOver);
@@ -93,7 +118,7 @@ export function Redactor() {
     return () => {
       document.removeEventListener("mouseover", onOver);
       document.removeEventListener("mouseout", onOut);
-      timers.forEach((t) => window.clearTimeout(t));
+      state.forEach((s) => window.clearTimeout(s.timer));
     };
   }, []);
 
