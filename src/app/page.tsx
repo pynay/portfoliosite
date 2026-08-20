@@ -52,8 +52,16 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             GitHub
-          </a>{" "}
-          and{" "}
+          </a>
+          ,{" "}
+          <a
+            href="https://x.com/pruhnay"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+          , and{" "}
           <a
             href="https://linkedin.com/in/pranay-yalamanchali"
             target="_blank"
