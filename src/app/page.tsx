@@ -5,7 +5,7 @@ export default function Home() {
 
       <div className="bio">
         <p>
-          I&apos;m the co-founder and CEO of{" "}
+          I&apos;m the CEO of{" "}
           <a
             href="https://netralabs.net"
             target="_blank"
@@ -13,22 +13,11 @@ export default function Home() {
           >
             <span className="accent">Netra</span>
           </a>
-          . We build counter-drone defense: low-cost, solar-powered sensor
-          nodes that watch large perimeters and corroborate what they see
-          peer-to-peer.
+          , where we build distributed counter-UAS technology.
         </p>
         <p>
-          I like owning things end to end — at Netra I wrote the sensor
-          firmware and detection pipeline, and I also run our sales. Before
-          this I interned at{" "}
-          <a
-            href="https://gmicloud.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GMI Cloud
-          </a>{" "}
-          and{" "}
+          I work at the intersection of engineering and go-to-market — I went
+          from software engineering intern at{" "}
           <a
             href="https://pedestal.ai"
             target="_blank"
@@ -36,7 +25,16 @@ export default function Home() {
           >
             Pedestal AI
           </a>
-          , and I&apos;m finishing a math and computer science degree at{" "}
+          , to GTM engineering intern at{" "}
+          <a
+            href="https://gmicloud.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GMI Cloud
+          </a>
+          , to leading sales at my own company. Along the way I&apos;m
+          finishing a math and computer science degree at{" "}
           <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
             UC San Diego
           </a>

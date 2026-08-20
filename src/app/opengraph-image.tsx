@@ -38,7 +38,7 @@ export default function OGImage() {
             fontStyle: "italic",
           }}
         >
-          co-founder &amp; ceo of netra · math-cs @ ucsd
+          ceo of netra · distributed counter-uas technology
         </div>
         <div
           style={{
