@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://pranay.fyi"),
   title: {
     default: "pranay yalamanchali",
-    template: "%s — pranay yalamanchali",
+    template: "%s · pranay yalamanchali",
   },
   description:
     "CEO of Netra, building distributed counter-UAS technology. Math-CS at UC San Diego.",

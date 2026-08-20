@@ -16,7 +16,7 @@ export default function Home() {
           , where we build distributed counter-UAS technology.
         </p>
         <p>
-          I work at the intersection of engineering and go-to-market — I went
+          I live in the intersection of go-to-market and engineering. I went
           from software engineering intern at{" "}
           <a
             href="https://pedestal.ai"
@@ -33,8 +33,8 @@ export default function Home() {
           >
             GMI Cloud
           </a>
-          , to leading sales at my own company. Along the way I&apos;m
-          finishing a math and computer science degree at{" "}
+          , to leading sales and marketing at my own company. Along the way
+          I&apos;m finishing a math and computer science degree at{" "}
           <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
             UC San Diego
           </a>
