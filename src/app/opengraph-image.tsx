@@ -18,14 +18,14 @@ export default function OGImage() {
           alignItems: "flex-start",
           justifyContent: "center",
           padding: "0 120px",
-          backgroundColor: "#faf9f7",
+          backgroundColor: "#ffffff",
         }}
       >
         <div
           style={{
             fontSize: 58,
             fontWeight: 500,
-            color: "#201e1b",
+            color: "#000000",
             marginBottom: 20,
           }}
         >
@@ -34,7 +34,7 @@ export default function OGImage() {
         <div
           style={{
             fontSize: 26,
-            color: "#7a756d",
+            color: "#666666",
             fontStyle: "italic",
           }}
         >
@@ -44,7 +44,7 @@ export default function OGImage() {
           style={{
             width: 64,
             height: 4,
-            backgroundColor: "#3d6b4f",
+            backgroundColor: "#000000",
             marginTop: 36,
           }}
         />

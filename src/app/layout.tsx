@@ -1,12 +1,38 @@
 import type { Metadata } from "next";
-import { Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
+/*
+  Redaction typeface (redaction.us) — dual-licensed SIL OFL 1.1 / LGPL 2.1.
+  License: public/fonts/OFL.txt. Redaction 50 is the degraded cut, used
+  for the name only.
+*/
+const redaction = localFont({
+  variable: "--font-redaction",
+  src: [
+    {
+      path: "../../public/fonts/Redaction-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Redaction-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/Redaction-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
+
+const redaction50 = localFont({
+  variable: "--font-redaction-50",
+  src: "../../public/fonts/Redaction50-Regular.woff2",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +70,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={newsreader.variable}>
+    <html
+      lang="en"
+      className={`${redaction.variable} ${redaction50.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

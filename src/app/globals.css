@@ -1,44 +1,41 @@
 @import "tailwindcss";
 
 /*
-  One-page personal site.
-  Paper-and-ink serif with tiny mono section labels and a single
-  green accent. Auto light/dark.
+  One-page personal site set in Redaction (redaction.us).
+  Stark monochrome: black on white, inverted in dark mode.
+  The name is set in Redaction 50, the degraded cut.
 */
 
 :root {
-  --bg: #faf9f7;
-  --fg: #201e1b;
-  --muted: #7a756d;
-  --accent: #3d6b4f;
-  --border: #e6e3dd;
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #666666;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #171614;
-    --fg: #e3e0da;
-    --muted: #8f8a81;
-    --accent: #94bd9e;
-    --border: #2c2a26;
+    --bg: #000000;
+    --fg: #ffffff;
+    --muted: #999999;
   }
 }
 
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
-  font-size: 1.0625rem;
-  line-height: 1.65;
-  max-width: 36rem;
+  font-family: var(--font-redaction), Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  max-width: 34rem;
   margin: 0 auto;
-  padding: 4.5rem 1.5rem 5rem;
+  padding: 5rem 1.5rem 5rem;
 }
 
 h1 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--font-redaction-50), var(--font-redaction), Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.15;
   margin: 0;
 }
 
@@ -47,32 +44,32 @@ p {
 }
 
 .bio {
-  margin-top: 1.75rem;
+  margin-top: 2.25rem;
 }
 
 .bio p {
-  margin: 1.1rem 0;
+  margin: 1.2rem 0;
 }
 
 .accent {
-  color: var(--accent);
-  font-weight: 500;
+  font-weight: 700;
 }
 
 a {
   color: var(--fg);
   text-decoration: underline;
-  text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover {
-  color: var(--accent);
+  background-color: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
 }
 
 a:focus-visible {
-  outline: 1px solid var(--accent);
+  outline: 1px solid var(--fg);
   outline-offset: 2px;
 }
 
@@ -81,16 +78,17 @@ a:focus-visible {
 }
 
 footer {
-  margin-top: 4rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border);
+  margin-top: 5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fg);
   color: var(--muted);
-  font-size: 0.875rem;
-  font-style: italic;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
 }
 
 ::selection {
-  background-color: var(--accent);
+  background-color: var(--fg);
   color: var(--bg);
 }
 
