@@ -1,50 +1,62 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, DM_Sans } from "next/font/google";
-import Script from "next/script";
+import localFont from "next/font/local";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 
 /*
-  Fonts: Instrument Serif for headings (elegant, not heavy),
-  DM Sans for body text (clean, humanist sans-serif).
-  Both loaded via next/font for zero layout shift.
+  Redaction typeface (redaction.us) — dual-licensed SIL OFL 1.1 / LGPL 2.1.
+  License: public/fonts/OFL.txt. Redaction 50 is the degraded cut, used
+  for the name only.
 */
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+const redaction = localFont({
+  variable: "--font-redaction",
+  src: [
+    {
+      path: "../../public/fonts/Redaction-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Redaction-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/Redaction-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const redaction50 = localFont({
+  variable: "--font-redaction-50",
+  src: "../../public/fonts/Redaction50-Regular.woff2",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pranayy.com"),
+  metadataBase: new URL("https://pranay.fyi"),
   title: {
-    default: ":^)",
-    template: "%s — :^)",
+    default: "pranay yalamanchali",
+    template: "%s · pranay yalamanchali",
   },
   description:
-    "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+    "ceo of netra, building distributed counter-uas technology. math-cs at uc san diego.",
   openGraph: {
-    title: "Pranay Yalamanchali",
+    title: "pranay yalamanchali",
     description:
-      "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
-    url: "https://pranayy.com",
-    siteName: "Pranay Yalamanchali",
+      "ceo of netra, building distributed counter-uas technology. math-cs at uc san diego.",
+    url: "https://pranay.fyi",
+    siteName: "pranay yalamanchali",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Pranay Yalamanchali",
+    title: "pranay yalamanchali",
     description:
-      "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
+      "ceo of netra, building distributed counter-uas technology. math-cs at uc san diego.",
   },
   robots: {
     index: true,
@@ -60,53 +72,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${redaction.variable} ${redaction50.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://assets.unicorn.studio" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://unicorn.studio" />
-        <link
-          rel="preload"
-          as="script"
-          href="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <Script
-        src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js"
-        strategy="afterInteractive"
-      />
-      <body className="min-h-full flex flex-col">
-        <a href="#main-content" className="skip-to-content">
-          Skip to content
-        </a>
-        <Nav />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-
-        {/* JSON-LD Person structured data for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Pranay Yalamanchali",
-              url: "https://pranayy.com",
-              jobTitle: "Student",
-              affiliation: {
-                "@type": "CollegeOrUniversity",
-                name: "University of California, San Diego",
-              },
-              description:
-                "Math-CS student at UC San Diego interested in systems, infrastructure, and building tools that work.",
-            }),
-          }}
-        />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

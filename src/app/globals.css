@@ -1,41 +1,150 @@
 @import "tailwindcss";
 
 /*
-  Theme: dark mono / engineering-print aesthetic.
-  Background is pure black, text is white/gray-300, font is mono.
+  One-page personal site set in Redaction (redaction.us).
+  Paper and ink: warm paper with near-black ink in light mode,
+  inverted to paper-colored type on ink in dark mode.
+  The name is set in Redaction 50, the degraded cut.
 */
 
-@theme inline {
-  --color-bg: #000000;
-  --color-fg: #ffffff;
-  --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-instrument-serif);
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+/*
+  Degraded Redaction cuts for the hover-redaction effect. Declared as
+  plain @font-face (not next/font) so each cut is only fetched the
+  first time a hover reaches it.
+*/
+@font-face {
+  font-family: "Redaction 10";
+  src: url("/fonts/Redaction10-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 20";
+  src: url("/fonts/Redaction20-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 35";
+  src: url("/fonts/Redaction35-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 50";
+  src: url("/fonts/Redaction50-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 70";
+  src: url("/fonts/Redaction70-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Redaction 100";
+  src: url("/fonts/Redaction100-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f3efe5;
+  --fg: #1c1a15;
+  --muted: #6e6a5f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16140f;
+    --fg: #ece7d9;
+    --muted: #97917f;
+  }
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  font-family: var(--font-mono);
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-redaction), Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 5rem;
+}
+
+h1 {
+  font-family: var(--font-redaction-50), var(--font-redaction), Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+.bio {
+  margin-top: 2.25rem;
+}
+
+.bio p {
+  margin: 1.2rem 0;
+}
+
+.accent {
+  font-weight: 700;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  background-color: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* fully redacted: a solid bar */
+.rw-full,
+a:hover .rw-full {
+  background-color: currentColor;
+}
+
+footer {
+  margin-top: 5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fg);
+  color: var(--muted);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-::-moz-selection {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-*:focus-visible {
-  outline: 1px solid #ffffff;
-  outline-offset: 2px;
+  background-color: var(--fg);
+  color: var(--bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -46,70 +155,5 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-.skip-to-content {
-  position: absolute;
-  left: -9999px;
-  z-index: 999;
-  padding: 0.5rem 1rem;
-  background: #ffffff;
-  color: #000000;
-  font-size: 0.875rem;
-  font-family: var(--font-mono);
-}
-.skip-to-content:focus {
-  left: 1rem;
-  top: 1rem;
-}
-
-/* Print styles for shareable Ctrl+P on /projects and /resume */
-@media print {
-  nav,
-  footer {
-    display: none !important;
-  }
-
-  body {
-    background-color: white !important;
-    color: black !important;
-    font-size: 11pt;
-    line-height: 1.4;
-  }
-
-  * {
-    animation: none !important;
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .project-card {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  a {
-    color: black !important;
-    text-decoration: underline;
-  }
-
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.8em;
-    color: #666;
-  }
-
-  a[href^="/"]::after {
-    content: none;
-  }
-
-  @page {
-    margin: 1cm 1.5cm;
-  }
-
-  .placeholder-image {
-    display: none !important;
   }
 }
