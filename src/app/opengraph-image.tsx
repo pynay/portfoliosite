@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Pranay Yalamanchali — Software Developer";
+export const alt = "pranay yalamanchali";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,29 +17,26 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#000000",
+          backgroundColor: "#ffffff",
         }}
       >
         <div
           style={{
-            fontFamily: "monospace",
-            fontSize: 64,
+            fontSize: 56,
             fontWeight: 700,
-            color: "#ffffff",
-            letterSpacing: "0.1em",
+            color: "#1f1f1f",
             marginBottom: 16,
           }}
         >
-          PRANAY YALAMANCHALI
+          pranay yalamanchali
         </div>
         <div
           style={{
-            fontFamily: "monospace",
-            fontSize: 24,
-            color: "rgba(255,255,255,0.6)",
+            fontSize: 28,
+            color: "#6b6b6b",
           }}
         >
-          math-cs @ ucsd · software developer
+          math-cs @ ucsd
         </div>
       </div>
     ),

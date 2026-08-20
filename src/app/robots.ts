@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://pranayy.com/sitemap.xml",
+    sitemap: "https://pranay.fyi/sitemap.xml",
   };
 }
