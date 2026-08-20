@@ -1,57 +1,57 @@
 export default function Home() {
   return (
     <>
-      <h1>Pranay Yalamanchali</h1>
+      <h1>pranay yalamanchali</h1>
 
       <div className="bio">
         <p>
-          I&apos;m the CEO of{" "}
+          i&apos;m the ceo of{" "}
           <a
             href="https://netralabs.net"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="accent">Netra</span>
+            <span className="accent">netra</span>
           </a>
-          , where we build distributed counter-UAS technology.
+          , where we build distributed counter-uas technology.
         </p>
         <p>
-          I live in the intersection of go-to-market and engineering. I went
+          i live in the intersection of go-to-market and engineering. i went
           from software engineering intern at{" "}
           <a
             href="https://pedestal.ai"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Pedestal AI
+            pedestal ai
           </a>
-          , to GTM engineering intern at{" "}
+          , to gtm engineering intern at{" "}
           <a
             href="https://gmicloud.ai"
             target="_blank"
             rel="noopener noreferrer"
           >
-            GMI Cloud
+            gmi cloud
           </a>
-          , to leading sales and marketing at my own company. Along the way
-          I&apos;m finishing a math and computer science degree at{" "}
+          , to leading sales and marketing at my own company. along the way
+          i&apos;m finishing a math and computer science degree at{" "}
           <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
-            UC San Diego
+            uc san diego
           </a>
           .
         </p>
         <p>
-          The fastest way to reach me is email:{" "}
+          the fastest way to reach me is email:{" "}
           <a href="mailto:pranay.yalaman@gmail.com">
             pranay.yalaman@gmail.com
           </a>
-          . I&apos;m also on{" "}
+          . i&apos;m also on{" "}
           <a
             href="https://github.com/pynay"
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub
+            github
           </a>
           ,{" "}
           <a
@@ -59,7 +59,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            X
+            x
           </a>
           , and{" "}
           <a
@@ -67,13 +67,13 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn
+            linkedin
           </a>
           .
         </p>
       </div>
 
-      <footer>San Diego, CA</footer>
+      <footer>san diego, ca</footer>
     </>
   );
 }

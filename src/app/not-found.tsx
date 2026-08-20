@@ -5,9 +5,9 @@ export default function NotFound() {
     <>
       <h1>404</h1>
       <div className="bio">
-        <p>This page doesn&apos;t exist.</p>
+        <p>this page doesn&apos;t exist.</p>
         <p>
-          <Link href="/">Back home</Link>
+          <Link href="/">back home</Link>
         </p>
       </div>
     </>
