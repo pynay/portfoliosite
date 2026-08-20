@@ -1,6 +1,9 @@
+import { Redactor } from "@/components/Redactor";
+
 export default function Home() {
   return (
     <>
+      <Redactor />
       <h1>pranay yalamanchali</h1>
 
       <div className="bio">
