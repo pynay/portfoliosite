@@ -13,15 +13,14 @@ export default function Home() {
           >
             <span className="accent">Netra</span>
           </a>
-          , where we&apos;re building counter-drone defense — low-cost solar
-          sensor nodes that watch large perimeters.
+          . We build counter-drone defense: low-cost, solar-powered sensor
+          nodes that watch large perimeters and corroborate what they see
+          peer-to-peer.
         </p>
         <p>
-          I&apos;m also finishing a math and computer science degree at{" "}
-          <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
-            UC San Diego
-          </a>
-          . Before Netra, I interned at{" "}
+          I like owning things end to end — at Netra I wrote the sensor
+          firmware and detection pipeline, and I also run our sales. Before
+          this I interned at{" "}
           <a
             href="https://gmicloud.ai"
             target="_blank"
@@ -37,14 +36,18 @@ export default function Home() {
           >
             Pedestal AI
           </a>
-          . I like systems, agents, and tools that work.
+          , and I&apos;m finishing a math and computer science degree at{" "}
+          <a href="https://ucsd.edu" target="_blank" rel="noopener noreferrer">
+            UC San Diego
+          </a>
+          .
         </p>
         <p>
-          You can reach me at{" "}
+          The fastest way to reach me is email:{" "}
           <a href="mailto:pranay.yalaman@gmail.com">
             pranay.yalaman@gmail.com
           </a>
-          , or find me on{" "}
+          . I&apos;m also on{" "}
           <a
             href="https://github.com/pynay"
             target="_blank"

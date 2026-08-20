@@ -2,21 +2,22 @@
 
 /*
   One-page personal site set in Redaction (redaction.us).
-  Stark monochrome: black on white, inverted in dark mode.
+  Paper and ink: warm paper with near-black ink in light mode,
+  inverted to paper-colored type on ink in dark mode.
   The name is set in Redaction 50, the degraded cut.
 */
 
 :root {
-  --bg: #ffffff;
-  --fg: #000000;
-  --muted: #666666;
+  --bg: #f3efe5;
+  --fg: #1c1a15;
+  --muted: #6e6a5f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #000000;
-    --fg: #ffffff;
-    --muted: #999999;
+    --bg: #16140f;
+    --fg: #ece7d9;
+    --muted: #97917f;
   }
 }
 
